@@ -1,15 +1,15 @@
 ﻿// https://www.ronja-tutorials.com/2018/03/23/textures.html
 
-Shader "Tutorials/03_Texture"
+Shader "Tutorials/08_ColorInterpolation"
 {
     // ShaderLab: Properties
     Properties
     {
-        // name([display name], [slider]) = (r, g, b, a)
-        _Color("Tint", Color) = (0, 0, 0, 1)
-
-        //  name([display name], [slider]) = "default texture" {}
-        _MainTex("Texture", 2D) = "white" {}
+        _MainTex("Main Texture", 2D) = "white" {}
+        _SecondaryTex("Secondary Texture", 2D) = "white" {}
+        // _Color("Color", Color) = (0, 0, 0, 1)
+        // _SecondaryColor("Secondary Color", Color) = (0, 0, 0, 1)
+        _Blend("Blend", Range(0, 1)) = 0
     }
 
     SubShader
@@ -30,8 +30,14 @@ Shader "Tutorials/03_Texture"
             #pragma fragment frag
 
             sampler2D _MainTex;
+            sampler2D _SecondaryTex;
+
             fixed4 _MainTex_ST;
-            fixed4 _Color;
+            fixed4 _SecondaryTex_ST;
+            // fixed4 _Color;
+            // fixed4 _SecondaryColor;
+
+            float _Blend;
 
             struct appdata
             {
@@ -49,14 +55,19 @@ Shader "Tutorials/03_Texture"
             {
                 v2f o;
                 o.position = UnityObjectToClipPos(v.vertex);
-                o.uv = TRANSFORM_TEX(v.uv, _MainTex);
+                o.uv = v.uv;
                 return o;
             }
 
             fixed4 frag(v2f i) : SV_TARGET
             {
-                fixed4 col = tex2D(_MainTex, i.uv); 
-                col *= _Color;
+                float2 main_uv = TRANSFORM_TEX(i.uv, _MainTex);
+                float2 secondary_uv = TRANSFORM_TEX(i.uv, _SecondaryTex);
+                
+                fixed4 main_color = tex2D(_MainTex, main_uv);
+                fixed4 secondary_color = tex2D(_SecondaryTex, secondary_uv);
+
+                fixed4 col = lerp(main_color, secondary_color, _Blend);
                 return col;
             }
 
