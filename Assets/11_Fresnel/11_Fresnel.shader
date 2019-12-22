@@ -29,8 +29,9 @@
         half _Glossiness;
         half _Metallic;
         
+        half3 _Emission;
+        
         fixed4 _Color;
-        fixed4 _Emission;
         fixed4 _FresnelColor;
 
         float _FresnelExponent;
