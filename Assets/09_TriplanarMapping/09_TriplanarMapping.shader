@@ -1,4 +1,6 @@
-﻿Shader "Tutorials/09_TriplanarMapping"
+﻿// https://www.ronja-tutorials.com/2018/05/11/triplanar-mapping.html
+
+Shader "Tutorials/09_TriplanarMapping"
 {
      Properties
     {
