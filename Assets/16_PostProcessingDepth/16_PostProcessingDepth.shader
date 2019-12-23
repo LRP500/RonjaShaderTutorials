@@ -58,7 +58,7 @@ Shader "Tutorials/16_PostProcessingDepth"
             {
                 // depth is stored in the red channel of the returned texture
                 float depth = tex2D(_CameraDepthTexture, i.uv).r;
-                // linear depth between camer and far clipping plane
+                // linear depth between camera and far clipping plane
                 depth = Linear01Depth(depth);
                 // depth as distance from camera in units
                 depth = depth * _ProjectionParams.z;
