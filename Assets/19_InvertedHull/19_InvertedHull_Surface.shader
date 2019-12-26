@@ -1,4 +1,4 @@
-﻿// https://www.ronja-tutorials.com/2018/07/15/postprocessing-outlines.html
+﻿// https://www.ronja-tutorials.com/2018/07/21/hull-outline.html
 
 Shader "Tutorials/19_InvertedHull/Surface"
 {

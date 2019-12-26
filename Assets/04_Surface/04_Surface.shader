@@ -4,11 +4,11 @@ Shader "Tutorials/04_Surface"
 {
     Properties
     {
-        _Color("Tint", Color) = (0, 0, 0, 1)
+        _Color("Tint", Color) = (1, 1, 1, 1)
         _MainTex("Texture", 2D) = "white" {}
         _Smoothness("Smoothness", Range(0, 1)) = 0
         _Metallic("Metallic", Range(0, 1)) = 0
-        [HDR] _Emission("Emission", Color) = (0, 0, 0, 1)
+        [HDR] _Emission("Emission", Color) = (1, 1, 1, 1)
     }
 
     SubShader
