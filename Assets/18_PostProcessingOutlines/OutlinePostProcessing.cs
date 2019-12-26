@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class NormalPostProcessing : MonoBehaviour
+public class OutlinePostProcessing : MonoBehaviour
 {
     [SerializeField]
     private Material _postProcessMaterial = null;
