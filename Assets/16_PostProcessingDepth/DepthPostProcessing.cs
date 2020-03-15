@@ -24,7 +24,7 @@ public class DepthPostProcessing : MonoBehaviour
     private void Update()
     {
         _waveDistance = _waveActive ? _waveDistance + (_waveSpeed * Time.deltaTime) : 0;
-   }
+    }
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {

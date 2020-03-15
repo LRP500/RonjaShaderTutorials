@@ -60,14 +60,14 @@
             // saturate is faster than clamp on some GPUs
             fresnel = saturate(1 - fresnel);
 
-            // apply fresnel color
-            fixed4 fresnelColor = fresnel * _FresnelColor;
-
             // apply exponent
             fresnel = pow(fresnel, _FresnelExponent);
 
+            // apply fresnel color
+            fixed4 fresnelColor = fresnel * _FresnelColor;
+
             // apply the fresnel value to the emission
-            o.Emission = (_Emission + fresnelColor) * _FresnelExponent;
+            o.Emission = _Emission + fresnelColor;
         }
 
         ENDCG
